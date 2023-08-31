@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes enter-from-top {
+	0% {
+		opacity: 0;
+		transform: translateY(-100%);
+	}
+	100% {
+		opacity: 100;
+		transform: translateY(0);
+	}
+}
+
+@keyframes enter-from-bottom {
+	0% {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+	100% {
+		opacity: 100;
+		transform: translateY(0);
+	}
+}
+
+.modal-enter-active {
+	animation: enter-from-top 1s;
+}
+
+.enter-bottom {
+	animation: enter-from-bottom 1s;
+}
