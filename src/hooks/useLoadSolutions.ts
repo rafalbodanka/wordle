@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import validSolutions from "../data/valid_solutions.json"
+import validGuesses from "../data/valid_guesses.json"
 
 type useLoadSolutionsProps = {
     play: boolean;
@@ -10,31 +12,16 @@ const useLoadSolutions = ({ play }: useLoadSolutionsProps) => {
 	const [guesses, setGuesses] = useState<string[]>([]);
 
 	useEffect(() => {
-		const loadSolutions = async () => {
+		const loadSolutions = () => {
 			try {
-				const response = await fetch(`${process.env.PUBLIC_URL}/valid_solutions.csv`);
-				const data = await (response.text());
-				const wordsArray = data.split('\r\n');
-				const filteredWords = wordsArray.filter(word => word.trim() !== '');
-				const randomId = Math.floor(Math.random() * filteredWords.length);
-				setSolutions(filteredWords);
-				setAnswer(filteredWords[randomId]);
+			  const randomId = Math.floor(Math.random() * validSolutions.length);
+			  setSolutions(validSolutions);
+			  setAnswer(validSolutions[randomId]);
 			} catch (error) {
 			}
-		};
-
-		const loadGuesses = async () => {
-			try {
-				const response = await fetch(`${process.env.PUBLIC_URL}/valid_guesses.csv`);
-				const data = await response.text();
-				const wordsArray = data.split('\r\n');
-				const filteredWords = wordsArray.filter(word => word.trim() !== '');
-				setGuesses(filteredWords);
-			} catch (error) {
-			}
-		};
+		  };
 		loadSolutions();
-		loadGuesses();
+		setGuesses(validGuesses);
 	}, [play]);
 
 	return { solutions, answer, guesses };
