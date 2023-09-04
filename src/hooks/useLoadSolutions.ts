@@ -12,8 +12,8 @@ const useLoadSolutions = ({ play }: useLoadSolutionsProps) => {
 	useEffect(() => {
 		const loadSolutions = async () => {
 			try {
-				const response = await fetch('./valid_solutions.csv');
-				const data = await response.text();
+				const response = await fetch(`${process.env.PUBLIC_URL}/valid_solutions.csv`);
+				const data = await (response.text());
 				const wordsArray = data.split('\r\n');
 				const filteredWords = wordsArray.filter(word => word.trim() !== '');
 				const randomId = Math.floor(Math.random() * filteredWords.length);
@@ -25,7 +25,7 @@ const useLoadSolutions = ({ play }: useLoadSolutionsProps) => {
 
 		const loadGuesses = async () => {
 			try {
-				const response = await fetch('./valid_guesses.csv');
+				const response = await fetch(`${process.env.PUBLIC_URL}/valid_guesses.csv`);
 				const data = await response.text();
 				const wordsArray = data.split('\r\n');
 				const filteredWords = wordsArray.filter(word => word.trim() !== '');
