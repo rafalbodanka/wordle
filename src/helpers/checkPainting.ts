@@ -19,7 +19,7 @@ const checkPainting = (rows: string[], answer: string, row: number, col: number)
 		}
 		return count;
 	}, 0);
-	const guesses = checkValidGuesses(answer, rows[row], "d")
+	const guesses = checkValidGuesses(answer, rows[row], letter)
 	const checkLimit = () => {
 		const currentOrd = rows[row].split('').slice(0, col).reduce((count, char) => {
 			if (char === letter) {

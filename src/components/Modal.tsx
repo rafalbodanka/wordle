@@ -1,8 +1,8 @@
 type ModalProps = {
-    answer: string;
-    modalMessage: string;
-    closeModal: React.MouseEventHandler<HTMLDivElement>;
-    restartGame: React.MouseEventHandler<HTMLButtonElement>;
+	answer: string;
+	modalMessage: string;
+	closeModal: React.MouseEventHandler<HTMLDivElement>;
+	restartGame: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const Modal = ({ answer, modalMessage, closeModal, restartGame }: ModalProps) => {

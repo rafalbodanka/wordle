@@ -1,4 +1,4 @@
-import {useState, useRef } from "react";
+import {useState, useRef, useEffect } from "react";
 import useLoadSolutions from "./hooks/useLoadSolutions";
 import Modal from "./components/Modal";
 import Message from "./components/Message";
@@ -19,8 +19,23 @@ const App = () => {
   const Input = useRef<HTMLInputElement>(null);
 
   const handleUserAnswer = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (userAnswer.length >= 5) return
-    setUserAnswer(event.target.value.toLowerCase());
+    const inputValue = event.target.value;
+    const regexPattern = /^[a-zA-Z]*$/;
+  
+    if (userAnswer.length >= 5) {
+      return;
+    }
+    
+    const cleanInputValue = inputValue.toLowerCase().replace(/[^a-zA-Z]/g, '');
+
+    // Prevents user from pasting other values than a-zA-Z
+    if (!regexPattern.test(inputValue)) {
+      Input.current!.value = cleanInputValue
+    }
+  
+    if (cleanInputValue.length <= 5) {
+      setUserAnswer(cleanInputValue);
+    }
   };
 
   const handleAnswerCheck = useAnswerCheck({
@@ -52,6 +67,7 @@ const App = () => {
 
   const closeModal = () => {
     setIsModalOpen(false)
+    Input.current?.blur()
   }
 
   const restartGame = () => {
