@@ -65,8 +65,8 @@ const App = () => {
   }
 
   return (
-    <div className="bg-[#121212] w-screen h-screen flex justify-center items-center font-Roboto" onClick={() => Input.current?.focus()} onKeyDown={(event) => handleKeyDown(event)}>
-      <div className="relative">
+    <div className="bg-[#121212] w-screen h-screen flex justify-center md:items-center font-Roboto" onClick={() => Input.current?.focus()} onKeyDown={(event) => handleKeyDown(event)}>
+      <div className="relative mt-8 md:mt-0">
         <div className="flex justify-center items-center">
           <Board rows={rows} currentRow={currentRow} userAnswer={userAnswer} answer={answer}/>
           <div>
