@@ -37,11 +37,13 @@ const useAnswerCheck = ({
 		if (!guesses.includes(userAnswer) && !solutions.includes(userAnswer)) return
 		if (rows.includes(userAnswer)) return
 		if (answer === userAnswer) {
+			Input.current?.blur()
 			setIsOver(true)
 			setIsModalOpen(true)
 			setModalMessage("YOU WON!")
 		} else {
 			if (currentRow >= 5) {
+				Input.current?.blur()
 				setIsOver(true)
 				setIsModalOpen(true)
 				setModalMessage("YOU LOST!")
