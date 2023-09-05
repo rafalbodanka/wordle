@@ -2,6 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+	background-color: #121212;
+}
+
+@media (min-width: 550px) {
+    .xs\:w-16 {
+        width: 4rem
+    }
+    .xs\:h-16 {
+        height: 4rem
+    }
+}
+
+@media (min-width: 350px) {
+    .xxs\:w-12 {
+        width: 3rem
+    }
+    .xxs\:h-12 {
+        height: 3rem
+    }
+	.xxs\:text-\[20px\] {
+		font-size: 20px
+	}
+}
+
+
+
 @keyframes enter-from-top {
 	0% {
 		opacity: 0;
